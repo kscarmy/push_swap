@@ -26,43 +26,36 @@ long	ft_long_atoi(const char *nptr)
 	return (re * sig);
 }
 
-
-void	ft_disp_long(long *str, w_point *calc) // A SUPP
+void	ft_putstr(char *str)
 {
-	int i;
+	int	i;
 
 	i = 0;
-	ft_printf("PRINT LONG :\n");
-	while (i < calc->nbr)
+	while (str[i] != '\0')
 	{
-		if (str[i] != 9999999999)
-			printf("|%ld| ", str[i]);
-		else
-			printf("|RIEN| ");
+		write(1, &str[i], 1);
 		i++;
 	}
-	printf("\n\n");
-	// printf("'%ld' '%ld' '%ld' '%ld'\n", str[0], str[1], str[2], str[3]);
-	// printf("%ld\n", str[i]); // TESTS A SUPP
-	// printf("%ld\n", str[i + 1]);
 }
 
-void	ft_disp_long_algo(long *str, w_point *calc) // A SUPP
+int	ft_isdigit(int c)
 {
-	int i;
+	if ((48 <= c) && (c <= 57))
+		return (1);
+	else
+		return (0);
+}
 
-	i = 0;
-	ft_printf("PRINT LONG :\n");
-	while (i < (calc->nbr * 4) && str[i] != 9999999999)
-	{
-		if (str[i] != 9999999999)
-			printf("|%ld| ", str[i]);
-		else
-			printf("|RIEN| ");
-		i++;
-	}
-	printf("\n\n");
-	// printf("'%ld' '%ld' '%ld' '%ld'\n", str[0], str[1], str[2], str[3]);
-	// printf("%ld\n", str[i]); // TESTS A SUPP
-	// printf("%ld\n", str[i + 1]);
+void	ft_free_all(t_point *calc)
+{
+	free(calc->stack);
+	calc->stack = NULL;
+}
+
+int	ft_exror_free(t_point *calc, int free)
+{
+	if (free == 1)
+		ft_free_all(calc);
+	ft_putstr("Error\n");
+	return (-1);
 }
