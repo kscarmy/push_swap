@@ -130,17 +130,18 @@ int ft_swap_checker(w_point *calc) // ret 0 si erreur, 1 sinon
 	i = 0;
 	while (i < calc->nbr)
 	{
-		if (calc->a[i] != calc->res[i])
+		if (calc->b[i] != 9999999999)
 			return (ft_swap_reset_ab(calc));
 		i++;
 	}
 	i = 0;
 	while (i < calc->nbr)
 	{
-		if (calc->b[i] != 9999999999)
+		if (calc->a[i] != calc->res[i])
 			return (ft_swap_reset_ab(calc));
 		i++;
 	}
+
 	return (1);
 }
 

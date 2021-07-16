@@ -165,10 +165,13 @@ void				ft_swap_rrr(w_point *calc);
 
 // core 
 void				ft_swap_trad(w_point *calc); // affiche les résultats
+int					ft_is_int(w_point *calc); // ret 0 si erreur, 1 sinon
 
 // utils
 void				ft_disp_long(long *str, w_point *calc); // affiche la lsite de long
-void	ft_disp_long_algo(long *str, w_point *calc);
+void				ft_disp_long_algo(long *str, w_point *calc);
+long				ft_long_atoi(const char *nptr);
+
 // pre core :
 int					ft_make_res(w_point *calc); // ret 0 si erreur, 1 sinon
 long				ft_found_with_min(long *str, long min, w_point *calc);

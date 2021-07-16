@@ -1,5 +1,24 @@
 #include "../includes/libft.h"
 
+int		ft_is_int(w_point *calc) // ret 0 si erreur, 1 sinon
+{
+	int i;
+
+	i = 0;
+	while (i < calc->nbr)
+	{
+		printf("\n\n");
+		printf("arg : %ld\n", calc->stack[i]);
+		if (calc->stack[i] < -2147483648)
+			return (0);
+		if (calc->stack[i] > 2147483647)
+			return (0);
+		i++;
+	}
+	printf("\n\nWTF DUDE\n\n");
+	return (1);
+}
+
 void	ft_swap_trad(w_point *calc)
 {
 	int i;
@@ -49,6 +68,8 @@ int	ft_swap_core(w_point *calc) // ret 0 si erreur, 1 sinon
 	int ret;
 
 	ret = ft_init_stacks(calc);
+	if (ret == 1)
+		ret = ft_is_int(calc);
 	if (ret == 1)
 		ret = ft_make_res(calc);
 

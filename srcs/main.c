@@ -39,7 +39,7 @@ int	ft_in_stack(w_point *calc, int argc, char **argv) // ret 0 erreur, 1 sinon
 		calc->stack[calc->nbr] = '\0'; 
 		while (argc < calc->nbr)
 		{
-			calc->stack[argc] = ft_atoi(argv[argc + 1]);
+			calc->stack[argc] = ft_long_atoi(argv[argc + 1]);
 			if ((argv[argc + 1][0] != '-' && calc->stack[argc] < 0) || (argv[argc + 1][0] == '-' && calc->stack[argc] > 0))
 				return (0);
 			// ft_printf("1 argc '%d' stack '%d'\n", argc, calc->stack[argc]);
@@ -70,7 +70,7 @@ int	ft_in_stack(w_point *calc, int argc, char **argv) // ret 0 erreur, 1 sinon
 		argc = 0;
 		while (argv[1][argc] != '\0')
 		{
-			calc->stack[i] = ft_atoi((argv[1] + argc));
+			calc->stack[i] = ft_long_atoi((argv[1] + argc));
 			if ((argv[1][argc] != '-' && calc->stack[argc] < 0) || (argv[1][argc] == '-' && calc->stack[argc] > 0))
 				return (0);
 			

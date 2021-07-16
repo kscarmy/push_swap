@@ -1,5 +1,32 @@
 #include "../includes/libft.h"
 
+long	ft_long_atoi(const char *nptr)
+{
+	long	re;
+	long	i;
+	long	sig;
+
+	i = 0;
+	sig = 1;
+	re = 0;
+	while ((nptr[i] == '\n') || (nptr[i] == '\t') || (nptr[i] == '\v')
+		|| (nptr[i] == '\f') || (nptr[i] == '\r') || (nptr[i] == ' '))
+		i++;
+	if (nptr[i] == 45 || nptr[i] == 43)
+	{
+		if (nptr[i] == 45)
+			sig = -sig;
+		i++;
+	}
+	while ((48 <= nptr[i]) && (nptr[i] <= 57))
+	{
+		re = (re * 10) + (nptr[i] - 48);
+		i++;
+	}
+	return (re * sig);
+}
+
+
 void	ft_disp_long(long *str, w_point *calc) // A SUPP
 {
 	int i;
