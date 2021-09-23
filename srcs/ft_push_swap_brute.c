@@ -33,7 +33,7 @@ int	ft_swap_broke(t_point *calc)
 	i = 0;
 	if (ft_swap_checker(calc) == 0)
 		i = ft_swap_broke_i(calc, i, 0);
-	while (i < (calc->nbr * 4) && ft_swap_checker(calc) == 0)
+	while (i < (calc->nbr * 25) && ft_swap_checker(calc) == 0)
 	{
 		if (calc->algo[i] < 11 && i > 0)
 			i = ft_swap_broke_i(calc, i, 1);
@@ -95,7 +95,7 @@ void	ft_swap_tradrun(t_point *calc)
 	int	i;
 
 	i = 0;
-	while (calc->algo[i] != 9999999999 && i < (calc->nbr * 4))
+	while (calc->algo[i] != 9999999999 && i < (calc->nbr * 25))
 	{
 		if (calc->algo[i] == 1)
 			ft_swap_sa(calc);

@@ -53,7 +53,7 @@ void	ft_swap_trad(t_point *calc)
 	int	i;
 
 	i = 0;
-	while (calc->algo[i] != 9999999999 && i < (calc->nbr * 4))
+	while (calc->algo[i] != 9999999999 && i < (calc->nbr * 25))
 	{
 		if (calc->algo[i] == 1)
 			ft_putstr("sa\n");
@@ -76,16 +76,16 @@ int	ft_swap_core(t_point *calc)
 
 	ret = ft_init_stacks(calc);
 
-	printf("CORE : nbr : %d\n", calc->nbr);
-	printf("S1'%ld' S2'%ld' S3'%ld'\n",calc->stack[0], calc->stack[1], calc->stack[2]);
+	// printf("CORE : nbr : %d\n", calc->nbr);
+	// printf("S1'%ld' S2'%ld' S3'%ld'\n",calc->stack[0], calc->stack[1], calc->stack[2]);
 	if (ret == 1)
 		ret = ft_is_int(calc);
-	printf("ret A: %d\n", ret);
+	// printf("ret A: %d\n", ret);
 	// ft_putstr("ok core 1\n");
 	if (ret == 1)
 		ret = ft_make_res(calc);
 	// ft_putstr("ok core 2\n");
-	printf("ret B: %d\n", ret);
+	// printf("ret B: %d\n", ret);
 	// if (ret == 1 && calc->nbr > 1)
 	// 	ret = ft_swap_broke(calc);
 	if (ret == 1 && calc->nbr > 1)
