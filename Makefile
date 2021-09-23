@@ -64,6 +64,7 @@ SRC_C = srcs/ft_push_swap_core.c\
 			srcs/ft_push_swap_utils.c\
 			srcs/ft_push_swap_brute.c\
 			srcs/ft_main_bis.c\
+			srcs/ft_push_swap_ring.c\
 		# srcs/ft_exit1.c\
 		# srcs/ft_check_files.c\
 		# srcs/ft_parsing1.c\
@@ -131,6 +132,7 @@ OBJS =  ft_push_swap_core.o\
 			ft_push_swap_utils.o\
 			ft_push_swap_brute.o\
 			ft_main_bis.o\
+			ft_push_swap_ring.o\
 
 
 
@@ -140,7 +142,7 @@ $(NAME) :
 	@$(CC) $(CFLAGS) $(SRC_C) -c
 	@ar -rc $(NAME_LIBFT) $(OBJS)
 	@ranlib $(NAME_LIBFT)
-	@$(CC) $(CFLAGS) -g3 -fsanitize=leak $(MAIN_C) $(NAME_LIBFT) -o $(NAME)
+	@$(CC) $(CFLAGS) $(MAIN_C) $(NAME_LIBFT) -o $(NAME)
 #-g3 -fsanitize=leak
 #$(SRC_C) 
 clean :

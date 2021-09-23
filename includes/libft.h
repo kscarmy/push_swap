@@ -18,14 +18,19 @@
 # include <stdlib.h>
 # include <fcntl.h>
 
+# include <stdio.h>
+
 typedef struct s_point
 {
-	int		nbr;
-	long	*stack;
+	int		nbr; // nombres passés en parametres 
+	long	*stack; // pile d origine
 	long	*a;
 	long	*b;
-	long	*res;
-	long	*algo;
+	long	*res; // resultat recherché
+	long	*algo; // algo de sortie
+	int		min; // tete lecture basse dans res
+	int		max; // tete lecture haute dans res
+	int		head; // tete lecture dans algo
 }				t_point;
 
 int					ft_verif_arg(char *argv);
@@ -63,7 +68,11 @@ int					ft_swap_reset_ab(t_point *calc);
 void				ft_swap_tradrun(t_point *calc);
 int					ft_swap_broke_i(t_point *calc, int i, int who);
 int					ft_in_stack_2(t_point *calc, int argc, char **argv);
-int					ft_in_stack_2(t_point *calc, int argc, char **argv);
 int					ft_init_stacks_2(t_point *calc);
+
+int ft_the_ring(t_point *calc); // algo pour nbr > 4
+int ft_size_pile(t_point *calc, long *stack);
+void	ft_a_to_b(t_point *calc);
+int ft_ring_dir(t_point *calc); // ret le nombre de decale en partant de la ou on est
 
 #endif

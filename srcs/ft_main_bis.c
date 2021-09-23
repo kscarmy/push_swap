@@ -5,6 +5,8 @@ int	ft_init_stacks_2(t_point *calc)
 	int	i;
 
 	i = 0;
+	printf("nbr INIT STACK 2: %d\n", calc->nbr);
+	printf("S1'%ld' S2'%ld' S3'%ld'\n",calc->stack[0], calc->stack[1], calc->stack[2]);
 	calc->res = malloc(sizeof(long) * (calc->nbr + 1));
 	if (calc->res == NULL)
 		return (0);
@@ -48,6 +50,7 @@ int	ft_in_stack_2(t_point *calc, int argc, char **argv)
 {
 	argc = 0;
 	calc->nbr = 0;
+	// printf("nbr in stack : %d\n", calc->nbr);
 	while (argv[1][argc] != '\0')
 	{
 		if (argv[1][argc] == '-')
@@ -60,7 +63,8 @@ int	ft_in_stack_2(t_point *calc, int argc, char **argv)
 		if (argv[1][argc] == ' ')
 			argc++;
 	}
-	calc->stack = malloc(sizeof(int) * calc->nbr);
+	// printf("nbr in stack : %d\n", calc->nbr);
+	calc->stack = malloc(sizeof(int) * (calc->nbr + 1));
 	if (calc->stack == NULL)
 		return (0);
 	calc->stack[calc->nbr] = '\0';

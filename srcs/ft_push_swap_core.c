@@ -75,14 +75,28 @@ int	ft_swap_core(t_point *calc)
 	int	ret;
 
 	ret = ft_init_stacks(calc);
+
+	printf("CORE : nbr : %d\n", calc->nbr);
+	printf("S1'%ld' S2'%ld' S3'%ld'\n",calc->stack[0], calc->stack[1], calc->stack[2]);
 	if (ret == 1)
 		ret = ft_is_int(calc);
+	printf("ret A: %d\n", ret);
+	// ft_putstr("ok core 1\n");
 	if (ret == 1)
 		ret = ft_make_res(calc);
+	// ft_putstr("ok core 2\n");
+	printf("ret B: %d\n", ret);
+	// if (ret == 1 && calc->nbr > 1)
+	// 	ret = ft_swap_broke(calc);
 	if (ret == 1 && calc->nbr > 1)
-		ret = ft_swap_broke(calc);
+		ret = ft_the_ring(calc);
+	// ft_putstr("ok core 3\n");
 	if (ret == 1 && calc->nbr > 1)
 		ft_swap_trad(calc);
+	// printf("ret C: %d\n", ret);
+	// ft_putstr("ok core 4\n");
 	ft_free_stacks(calc);
+	// ft_putstr("ok core 5\n");
+	// printf("ret D: %d\n", ret);
 	return (ret);
 }
