@@ -89,7 +89,7 @@ int	ft_swap_core(t_point *calc)
 	// if (ret == 1 && calc->nbr > 1)
 	// 	ret = ft_swap_broke(calc);
 	if (ret == 1 && calc->nbr > 1)
-		ret = ft_the_ring(calc);
+		ret = ft_the_rong(calc);
 	// ft_putstr("ok core 3\n");
 	if (ret == 1 && calc->nbr > 1)
 		ft_swap_trad(calc);

@@ -34,54 +34,54 @@ int ft_the_ring(t_point *calc) // algo pour nbr > 4
 	return(1);
 }
 
-int ft_size_pile(t_point *calc, long *stack)
-{
-    int i;
+// int ft_size_pile(t_point *calc, long *stack)
+// {
+//     int i;
 
-    i = 0;
-    while(stack[i] != 9999999999 && i < calc->nbr)
-        i++;
-    return(i);
-}
+//     i = 0;
+//     while(stack[i] != 9999999999 && i < calc->nbr)
+//         i++;
+//     return(i);
+// }
 
-void	ft_a_to_b(t_point *calc)
-{
-	int	dir;
+// void	ft_a_to_b(t_point *calc)
+// {
+// 	int	dir;
 
-	dir = ft_ring_dir(calc);
-	// printf("dir : %d\n", dir);
-	while (dir > 0)
-	{
-		ft_swap_ra(calc);
-		calc->algo[calc->head] = 6;
-		calc->head = calc->head + 1;
-		dir--;
-	}
-	while (dir < 0)
-	{
-		ft_swap_rra(calc);
-		calc->algo[calc->head] = 9;
-		calc->head = calc->head + 1;
-		dir++;
-	}
-	if (dir == 0)
-	{
-		ft_swap_pb(calc);
-		calc->algo[calc->head] = 5;
-		calc->head = calc->head + 1;
-	}
-	else
-		ft_putstr("ERROR IN ring-ft_a_to_b\n");
-	if (calc->b[0] == calc->res[calc->min])
-		calc->min = calc->min + 1;
-	else
-	{
-		calc->max = calc->max - 1;
-		ft_swap_rb(calc);
-		calc->algo[calc->head] = 7;
-		calc->head = calc->head + 1;
-	}
-}
+// 	dir = ft_ring_dir(calc);
+// 	// printf("dir : %d\n", dir);
+// 	while (dir > 0)
+// 	{
+// 		ft_swap_ra(calc);
+// 		calc->algo[calc->head] = 6;
+// 		calc->head = calc->head + 1;
+// 		dir--;
+// 	}
+// 	while (dir < 0)
+// 	{
+// 		ft_swap_rra(calc);
+// 		calc->algo[calc->head] = 9;
+// 		calc->head = calc->head + 1;
+// 		dir++;
+// 	}
+// 	if (dir == 0)
+// 	{
+// 		ft_swap_pb(calc);
+// 		calc->algo[calc->head] = 5;
+// 		calc->head = calc->head + 1;
+// 	}
+// 	else
+// 		ft_putstr("ERROR IN ring-ft_a_to_b\n");
+// 	if (calc->b[0] == calc->res[calc->min])
+// 		calc->min = calc->min + 1;
+// 	else
+// 	{
+// 		calc->max = calc->max - 1;
+// 		ft_swap_rb(calc);
+// 		calc->algo[calc->head] = 7;
+// 		calc->head = calc->head + 1;
+// 	}
+// }
 
 int ft_ring_dir(t_point *calc) // ret le nombre de decale en partant de la ou on est
 {

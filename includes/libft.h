@@ -28,8 +28,8 @@ typedef struct s_point
 	long	*b;
 	long	*res; // resultat recherché
 	long	*algo; // algo de sortie
-	int		min; // tete lecture basse dans res
-	int		max; // tete lecture haute dans res
+	long		min; // tete lecture basse dans res
+	long		max; // tete lecture haute dans res
 	int		head; // tete lecture dans algo
 }				t_point;
 
@@ -71,8 +71,17 @@ int					ft_in_stack_2(t_point *calc, int argc, char **argv);
 int					ft_init_stacks_2(t_point *calc);
 
 int ft_the_ring(t_point *calc); // algo pour nbr > 4
-int ft_size_pile(t_point *calc, long *stack);
+// int ft_size_pile(t_point *calc, long *stack);
 void	ft_a_to_b(t_point *calc);
 int ft_ring_dir(t_point *calc); // ret le nombre de decale en partant de la ou on est
+int	ft_the_rong(t_point *calc);
+// void	ft_b_min_max(t_point *calc);
+int ft_size_pile(t_point *calc, long *stack);
+long	ft_rong_dir(t_point *calc);
+void	ft_a_to_b(t_point *calc);
+void	ft_init_rong(t_point *calc);
+long	ft_b_found_min(t_point *calc);
+long	ft_b_found_max(t_point *calc);
+
 
 #endif
