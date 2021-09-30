@@ -61,6 +61,8 @@ void	ft_free_stacks(t_point *calc)
 	calc->res = NULL;
 	free(calc->algo);
 	calc->algo = NULL;
+	free(calc->c);
+	calc->c = NULL;
 }
 
 int	ft_init_stacks(t_point *calc)

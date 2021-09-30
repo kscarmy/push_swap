@@ -31,6 +31,7 @@ typedef struct s_point
 	long		min; // tete lecture basse dans res
 	long		max; // tete lecture haute dans res
 	int		head; // tete lecture dans algo
+	long		*c; // pile de calcul de la pile a
 }				t_point;
 
 int					ft_verif_arg(char *argv);
@@ -77,11 +78,21 @@ int ft_ring_dir(t_point *calc); // ret le nombre de decale en partant de la ou o
 int	ft_the_rong(t_point *calc);
 // void	ft_b_min_max(t_point *calc);
 int ft_size_pile(t_point *calc, long *stack);
-long	ft_rong_dir(t_point *calc);
+long	ft_rong_dir(t_point *calc, long val);
 void	ft_a_to_b(t_point *calc);
 void	ft_init_rong(t_point *calc);
 long	ft_b_found_min(t_point *calc);
 long	ft_b_found_max(t_point *calc);
+long	ft_rong_dir_up_down(t_point *calc, long ret, long *stack);
+long	ft_a_found_min(t_point *calc);
+long	ft_set_c(t_point *calc); // remplis c des valeurs calculees de a
+long	ft_c_found_min(t_point *calc);
+void	ft_pre_set_c(t_point *calc);
+void	ft_reset_c(t_point *calc); // remplis c de 9999999999
+void	ft_pre_set_a(t_point *calc);
+long	ft_rong_dir_c(t_point *calc, long val);
+long	ft_found_min_c(t_point *calc);
+long	ft_found_max_c(t_point *calc);
 
 
 #endif

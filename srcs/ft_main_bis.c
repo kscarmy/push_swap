@@ -21,6 +21,16 @@ int	ft_init_stacks_2(t_point *calc)
 		i++;
 	}
 	calc->algo[(calc->nbr * 25)] = '\0';
+	i = 0;
+	calc->c = malloc(sizeof(long) * (calc->nbr + 1));
+	if (calc->c == NULL)
+		return (0);
+	while (i < (calc->nbr))
+	{
+		calc->c[i] = 9999999999;
+		i++;
+	}
+	calc->algo[(calc->nbr)] = '\0';
 	return (1);
 }
 

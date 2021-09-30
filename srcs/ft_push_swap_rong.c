@@ -26,6 +26,7 @@ void	ft_init_rong(t_point *calc)
 int	ft_the_rong(t_point *calc)
 {
     int h;
+	int mi;
 
     h = 0;
 	calc->head = 0;
@@ -34,16 +35,17 @@ int	ft_the_rong(t_point *calc)
     {
 
         // FONCTION QUI CHERCHE LE bon nombre ET LE MET DANS b
+		ft_pre_set_a(calc);
 		ft_a_to_b(calc);
         h++;
     }
     h = 0;
-	while (calc->b[0] != calc->res[calc->nbr - 1])
-	{
-		ft_swap_rb(calc);
-		calc->algo[calc->head] = 7;
-		calc->head = calc->head + 1;
-	}
+	// while (calc->b[0] != calc->res[calc->nbr - 1]) // perte de temps
+	// {
+	// 	ft_swap_rb(calc);
+	// 	calc->algo[calc->head] = 7;
+	// 	calc->head = calc->head + 1;
+	// }
     while (calc->b[0] != 9999999999 && h < (calc->nbr))
     {
 		ft_swap_pa(calc);
@@ -52,12 +54,25 @@ int	ft_the_rong(t_point *calc)
         // remettre tout b dans a
         h++;
     }
-	// while (calc->a[0] != calc->min) // permet de remettre a dans l'ordre
-	// {
-	// 	ft_swap_ra(calc);
-	// 	calc->algo[calc->head] = 6;
-	// 	calc->head = calc->head + 1;
-	// }
+	mi = ft_a_found_min(calc);
+	mi--; // A VERIFIER SI OPERANT H24 OU PAS !!!!!!!!!!
+	while (mi != 0) // permet de remettre a dans l'ordre
+	{
+		if (mi > 0)
+		{
+			ft_swap_ra(calc);
+			calc->algo[calc->head] = 6;
+			calc->head = calc->head + 1;
+			mi--;
+		}
+		else
+		{
+			ft_swap_rra(calc);
+			calc->algo[calc->head] = 9;
+			calc->head = calc->head + 1;
+			mi++;
+		}
+	}
 	// ft_putstr("fin ring\n");
 	// printf("min : %ld max : %ld\n", calc->min, calc->max);
 	return(1);
@@ -82,9 +97,26 @@ int ft_size_pile(t_point *calc, long *stack)
     int i;
 
     i = 0;
-    while(stack[i] != 9999999999 && i < calc->nbr)
+    while(stack[i] != 9999999999 && i < calc->nbr && stack[i] != '\0')
         i++;
     return(i);
+}
+
+long	ft_a_found_min(t_point *calc)
+{
+	int i;
+	long ret;
+	int sizeb;
+
+	i = 0;
+	sizeb = ft_size_pile(calc, calc->a);
+	while(calc->a[i] != 9999999999 && i < sizeb) // le plus gros
+	{
+		if (calc->a[i] == calc->min)
+			ret = i + 1;
+		i++;
+	}
+	return(ft_rong_dir_up_down(calc, ret, calc->b));
 }
 
 long	ft_b_found_min(t_point *calc)
@@ -102,7 +134,7 @@ long	ft_b_found_min(t_point *calc)
 		i++;
 	}
 	calc->min = calc->a[0];
-	return(ret);
+	return(ft_rong_dir_up_down(calc, ret, calc->b));
 }
 
 long	ft_b_found_max(t_point *calc)
@@ -120,10 +152,28 @@ long	ft_b_found_max(t_point *calc)
 		i++;
 	}
 	calc->max = calc->a[0];
-	return(ret);
+	return(ft_rong_dir_up_down(calc, ret, calc->b));
 }
 
-long	ft_rong_dir(t_point *calc)
+long	ft_rong_dir_up_down(t_point *calc, long ret, long *stack)
+{
+	long	sizeb;
+
+	sizeb = ft_size_pile(calc, stack);
+	if (ret < (sizeb - ret))
+	{
+		// printf("up\n");
+		return (ret);
+	}
+	else
+	{
+		// printf("down\n");
+		return ((sizeb - ret) * -1);
+	}
+}
+
+
+long	ft_rong_dir(t_point *calc, long val)
 {
     int i;
 	long i_ret;
@@ -134,14 +184,14 @@ long	ft_rong_dir(t_point *calc)
 	i_ret = 0;
 	// found_max = 0;
 	sizeb = ft_size_pile(calc, calc->b);
-	if (calc->a[0] < calc->min)
+	if (val < calc->min)
 		return(ft_b_found_min(calc));// 
-	if (calc->a[0] > calc->max)
+	if (val > calc->max)
 		return(ft_b_found_max(calc));// 
-	// printf("calc a : %ld\n", calc->a[0]);
+	// printf("calc a : %ld\n", val);
 	while(calc->b[i] != 9999999999 && i <= sizeb) // le plus gros
 	{
-		if (calc->a[0] > calc->b[i])
+		if (val > calc->b[i])
 			i_ret = i;
 		i++;
 	}
@@ -150,7 +200,7 @@ long	ft_rong_dir(t_point *calc)
 	while(calc->b[i] != 9999999999 && i <= sizeb) // le plus gros
 	{
 		// printf("calc bi : %ld\n", calc->b[i]);
-		if (calc->a[0] > calc->b[i] && calc->b[i_ret] < calc->b[i])
+		if (val > calc->b[i] && calc->b[i_ret] < calc->b[i])
 		{
 			// printf("rea\n");
 			i_ret = i;
@@ -163,7 +213,7 @@ long	ft_rong_dir(t_point *calc)
 	// 	// printf("i_ret\n");
 	// 	return (i_ret);
 	// }
-	return (i_ret);
+	return (ft_rong_dir_up_down(calc, i_ret, calc->b));
 	// i = 0;
 	// while(calc->b[i] != 9999999999 && i < sizeb)
 	// {
@@ -235,9 +285,10 @@ long	ft_rong_dir(t_point *calc)
 
 void	ft_a_to_b(t_point *calc)
 {
-	int dir;
+	long dir;
 
-	dir = ft_rong_dir(calc);
+	dir = ft_rong_dir(calc, calc->a[0]);
+	// printf("calc a 0 %ld dir %d\n", calc->a[0], dir);
 	// printf("dir %d\n", dir);
 	while (dir > 0)
 	{
