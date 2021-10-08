@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/30 07:49:56 by guderram          #+#    #+#             */
-/*   Updated: 2021/09/30 10:13:55 by guderram         ###   ########.fr       */
+/*   Updated: 2021/10/08 04:48:47 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,16 @@ int	ft_size_pile(t_point *calc, long *stack)
 
 	i = 0;
 	while (stack[i] != 9999999999 && i < calc->nbr)
+		i++;
+	return (i);
+}
+
+int	ft_size_pile_end(t_point *calc, long *stack)
+{
+	int	i;
+
+	i = 0;
+	while (stack[i] != 9999999999 && i < calc->nbr && stack[i])
 		i++;
 	return (i);
 }
@@ -53,6 +63,11 @@ long	ft_b_found_min(t_point *calc)
 	{
 		if (calc->b[i] == calc->min)
 			ret = i + 1;
+		i++;
+	}
+	i = 0;
+	while (calc->c[i])
+	{
 		i++;
 	}
 	calc->min = calc->a[0];

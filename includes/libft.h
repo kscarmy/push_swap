@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/20 13:25:39 by guderram          #+#    #+#             */
-/*   Updated: 2021/09/30 10:14:40 by guderram         ###   ########.fr       */
+/*   Updated: 2021/10/08 04:50:41 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,5 +80,6 @@ long				ft_found_max_c(t_point *calc);
 int					ft_init_stacks_3(t_point *calc);
 int					ft_the_rong_1(t_point *calc, int mi);
 int					ft_is_a_good(t_point *calc);
+int					ft_size_pile_end(t_point *calc, long *stack);
 
 #endif

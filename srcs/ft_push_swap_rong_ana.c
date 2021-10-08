@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/30 07:50:08 by guderram          #+#    #+#             */
-/*   Updated: 2021/09/30 07:50:09 by guderram         ###   ########.fr       */
+/*   Updated: 2021/10/08 04:48:07 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ long	ft_c_found_min(t_point *calc)
 	i = 0;
 	ret = calc->c[0];
 	min = 0;
-	size = ft_size_pile(calc, calc->c);
+	size = ft_size_pile_end(calc, calc->c);
 	while (calc->c[i] != 9999999999 && i < size)
 	{
 		if (calc->c[i] < ret)
@@ -92,11 +92,6 @@ void	ft_pre_set_c(t_point *calc)
 	{
 		calc->c[i] = i;
 		calc->c[size - i] = i;
-		i++;
-	}
-	i = 0;
-	while (i < size)
-	{
 		i++;
 	}
 }

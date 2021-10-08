@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/30 07:50:23 by guderram          #+#    #+#             */
-/*   Updated: 2021/09/30 09:11:48 by guderram         ###   ########.fr       */
+/*   Updated: 2021/10/08 04:49:48 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,6 @@ int	ft_in_stack(t_point *calc, int argc, char **argv)
 		calc->stack = malloc(sizeof(long) * (calc->nbr + 1));
 		if (calc->stack == NULL)
 			return (0);
-		calc->stack[calc->nbr] = '\0';
 		while (argc < calc->nbr)
 		{
 			calc->stack[argc] = ft_long_atoi(argv[argc + 1]);
@@ -46,6 +45,7 @@ int	ft_in_stack(t_point *calc, int argc, char **argv)
 				return (0);
 			argc++;
 		}
+		calc->stack[calc->nbr] = '\0';
 	}
 	else
 	{
@@ -75,25 +75,25 @@ int	ft_init_stacks(t_point *calc)
 	int	i;
 
 	i = 0;
-	calc->a = malloc(sizeof(long) * (calc->nbr + 2));
+	calc->a = malloc(sizeof(long) * (calc->nbr + 1));
 	if (calc->a == NULL)
 		return (0);
-	calc->a[calc->nbr] = '\0';
 	while (i < calc->nbr)
 	{
 		calc->a[i] = calc->stack[i];
 		i++;
 	}
+	calc->a[calc->nbr] = '\0';
 	i = 0;
 	calc->b = malloc(sizeof(long) * (calc->nbr + 1));
 	if (calc->b == NULL)
 		return (0);
-	calc->b[calc->nbr] = '\0';
 	while (i < calc->nbr)
 	{
 		calc->b[i] = 9999999999;
 		i++;
 	}
+	calc->b[calc->nbr] = '\0';
 	if (ft_init_stacks_2(calc) == 0)
 		return (0);
 	return (1);
