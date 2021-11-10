@@ -18,6 +18,8 @@ SRC_C = srcs/ft_push_swap_core.c\
 			srcs/ft_push_swap_rong_2.c\
 			srcs/ft_push_swap_rong_ana.c\
 			srcs/ft_push_swap_rong_ana_1.c\
+			srcs/ft_push_swap_brute.c\
+			
 
 MAIN_C = srcs/main.c\
 
@@ -33,6 +35,7 @@ OBJS =  ft_push_swap_core.o\
 			ft_push_swap_rong_2.o\
 			ft_push_swap_rong_ana.o\
 			ft_push_swap_rong_ana_1.o\
+			ft_push_swap_brute.o\
 
 all : $(NAME)
 
