@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/30 07:49:33 by guderram          #+#    #+#             */
-/*   Updated: 2021/11/10 19:34:38 by guderram         ###   ########.fr       */
+/*   Updated: 2021/11/12 20:17:35 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,12 +95,10 @@ int	ft_swap_core(t_point *calc)
 		ret = ft_is_a_good(calc);
 	if (calc->nbr > 1 && calc->nbr < 6)
 	{
-		// printf("brute\n");
 		ft_brute(calc);
 	}
 	if (ret == 1 && calc->nbr > 5)
 	{
-		// printf("the rong\n");
 		ret = ft_the_rong(calc);
 	}
 	if (ret == 1 && calc->nbr > 1)

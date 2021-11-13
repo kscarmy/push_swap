@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/30 07:49:41 by guderram          #+#    #+#             */
-/*   Updated: 2021/09/30 07:49:42 by guderram         ###   ########.fr       */
+/*   Updated: 2021/11/12 20:20:16 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	ft_swap_ra(t_point *calc)
 	swap = calc->a[0];
 	i = 0;
 	while (calc->nbr > 1 && i < (calc->nbr - 1) && calc->a[i + 1] != 9999999999
-		 && calc->a[i] != 9999999999)
+		&& calc->a[i] != 9999999999)
 	{
 		calc->a[i] = calc->a[i + 1];
 		i++;
@@ -36,7 +36,7 @@ void	ft_swap_rb(t_point *calc)
 	swap = calc->b[0];
 	i = 0;
 	while (calc->nbr > 1 && i < (calc->nbr - 1) && calc->b[i] != 9999999999
-		 && calc->b[i + 1] != 9999999999)
+		&& calc->b[i + 1] != 9999999999)
 	{
 		calc->b[i] = calc->b[i + 1];
 		i++;

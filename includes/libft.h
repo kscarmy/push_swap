@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/20 13:25:39 by guderram          #+#    #+#             */
-/*   Updated: 2021/11/08 19:05:43 by guderram         ###   ########.fr       */
+/*   Updated: 2021/11/13 16:20:15 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,7 @@
 # define LIBFT_H
 # include <unistd.h>
 # include <stdlib.h>
-
-# include <stdio.h> // A SUPPRIMER !!!!!!!!!!!
-
-
+# include <stdio.h> // A SUPP
 typedef struct s_point
 {
 	int		nbr;
@@ -84,12 +81,11 @@ int					ft_init_stacks_3(t_point *calc);
 int					ft_the_rong_1(t_point *calc, int mi);
 int					ft_is_a_good(t_point *calc);
 int					ft_size_pile_end(t_point *calc, long *stack);
-
-void	ft_reset_a_b(t_point *calc); // reset a et b
-void	ft_incre_algo(t_point *calc); // incre algo pour brute force
-void	ft_apply_brute(t_point *calc); // applique la brute force
-void	ft_brute(t_point *calc); // fonction principale du brute force
-void	ft_swap_tradrun_1(t_point *calc, int i); // permet d'appliquer algo dans les listes afin de tester.
-
+void				ft_reset_a_b(t_point *calc);
+void				ft_incre_algo(t_point *calc);
+void				ft_apply_brute(t_point *calc);
+void				ft_brute(t_point *calc);
+void				ft_swap_tradrun_1(t_point *calc, int i);
+int					ft_incre_algo_bis(t_point *calc, int u);
 
 #endif

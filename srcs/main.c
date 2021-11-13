@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/30 07:50:23 by guderram          #+#    #+#             */
-/*   Updated: 2021/10/08 04:49:48 by guderram         ###   ########.fr       */
+/*   Updated: 2021/11/12 20:19:09 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int	ft_in_stack(t_point *calc, int argc, char **argv)
 		{
 			calc->stack[argc] = ft_long_atoi(argv[argc + 1]);
 			if ((argv[argc + 1][0] != '-' && calc->stack[argc] < 0) ||
-			 (argv[argc + 1][0] == '-' && calc->stack[argc] > 0))
+			(argv[argc + 1][0] == '-' && calc->stack[argc] > 0))
 				return (0);
 			argc++;
 		}

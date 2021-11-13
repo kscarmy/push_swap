@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/08 17:17:24 by guderram          #+#    #+#             */
-/*   Updated: 2021/11/10 20:03:12 by guderram         ###   ########.fr       */
+/*   Updated: 2021/11/13 16:15:46 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,22 +27,6 @@ void	ft_swap_tradrun_1(t_point *calc, int i)
 	ft_swap_tradrun_2(calc, i);
 }
 
-void	ft_reset_a_b(t_point *calc)
-{
-	int	i;
-
-	i = 0;
-	while (i < (calc->nbr))
-	{
-		calc->a[i] = calc->stack[i];
-		calc->b[i] = 9999999999;
-		i++;
-	}
-	calc->a[i] = '\0';
-	calc->b[i] = '\0';
-	// printf("ex res\n");
-}
-
 void	ft_incre_algo(t_point *calc)
 {
 	int	i;
@@ -50,30 +34,9 @@ void	ft_incre_algo(t_point *calc)
 	i = 0;
 	while (i >= 0 && i < ((calc->nbr * 3) * 11) && calc->algo[i] != 9999999999)
 	{
-
-		if (calc->algo[i + 1] == 9999999999 && calc->algo[i] < 11)
+		i = ft_incre_algo_bis(calc, i);
+		if (calc->algo[i] >= 11 && calc->algo[i + 1] != 9999999999)
 		{
-			calc->algo[i] = calc->algo[i] + 1;
-			i = -10;
-		}
-		else if (calc->algo[i] >= 11 && calc->algo[i + 1] != 9999999999)
-		{
-			// calc->algo[i + 1] = calc->algo[i + 1] + 1;
-			calc->algo[i] = 1;
-		}
-		else if (calc->algo[i] >= 11 && calc->algo[i + 1] == 9999999999)
-		{
-			calc->algo[i + 1] = 0;
-			calc->algo[i] = 1;
-		}
-		else if (calc->algo[i] < 11)
-		{
-			calc->algo[i] = calc->algo[i] + 1;
-			i = -10;
-		}
-		if (calc->algo[i] >= 11 &&  calc->algo[i + 1] != 9999999999) // reset les == 11
-		{
-			
 			while (calc->algo[i] == 11)
 			{
 				calc->algo[i] = 1;
@@ -82,20 +45,39 @@ void	ft_incre_algo(t_point *calc)
 			i = -10;
 		}
 		i++;
-		
 	}
-	i = 0;
-	while (calc->algo[i] != 9999999999)
+}
+
+int	ft_incre_algo_bis(t_point *calc, int u)
+{
+	int	i;
+
+	i = u;
+	if (calc->algo[i + 1] == 9999999999 && calc->algo[i] < 11)
 	{
-		// printf("[%ld]", calc->algo[i]);
-		i++;
+		calc->algo[i] = calc->algo[i] + 1;
+		i = -10;
 	}
-	// printf("\n");
+	else if (calc->algo[i] >= 11 && calc->algo[i + 1] != 9999999999)
+	{
+		calc->algo[i] = 1;
+	}
+	else if (calc->algo[i] >= 11 && calc->algo[i + 1] == 9999999999)
+	{
+		calc->algo[i + 1] = 0;
+		calc->algo[i] = 1;
+	}
+	else if (calc->algo[i] < 11)
+	{
+		calc->algo[i] = calc->algo[i] + 1;
+		i = -10;
+	}
+	return (i);
 }
 
 void	ft_apply_brute(t_point *calc)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (i < ((calc->nbr * 3) * 11) && calc->algo[i] != 9999999999)
@@ -107,19 +89,16 @@ void	ft_apply_brute(t_point *calc)
 
 void	ft_brute(t_point *calc)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	if (calc->algo[i] == 9999999999)
 		calc->algo[i] = 1;
 	ft_apply_brute(calc);
-	// printf("A\n");
 	if (ft_is_a_good(calc) == 1)
 		ft_reset_a_b(calc);
-	// printf("B\n");
-	while (ft_is_a_good(calc) == 1) // supp i <
+	while (ft_is_a_good(calc) == 1)
 	{
-		// printf("C\n");
 		if (ft_is_a_good(calc) == 1)
 		{
 			ft_reset_a_b(calc);
@@ -127,8 +106,5 @@ void	ft_brute(t_point *calc)
 		}
 		ft_apply_brute(calc);
 		i++;
-		// printf("%d\n", i);
 	}
-	// printf("i : %d", i);
-	// printf("algo %ld %ld %ld\n", calc->algo[0], calc->algo[1], calc->algo[2]);
 }
