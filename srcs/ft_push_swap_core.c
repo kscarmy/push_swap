@@ -93,7 +93,7 @@ int	ft_swap_core(t_point *calc)
 		ret = ft_make_res(calc);
 	if (ret == 1)
 		ret = ft_is_a_good(calc);
-	if (calc->nbr > 1 && calc->nbr < 6)
+	if (ret == 1 && calc->nbr > 1 && calc->nbr < 6)
 	{
 		ft_brute(calc);
 	}
